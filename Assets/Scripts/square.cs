@@ -11,8 +11,15 @@ public class square : MonoBehaviour
         float y = Random.Range(3f, 5f);
         transform.position = new Vector3(x, y, 0);
 
-        float size = Random.Range(0.5f, 1.5f);
-        transform.localScale = new Vector3(size, size, 0);
+        float size = Random.Range(0.03f, 0.1f);
+        int type = Random.Range(1, 3);
+        if (type == 1)
+        {
+            transform.localScale = new Vector3(size, size, 0);
+        } else
+        {
+            transform.localScale = new Vector3(-size, size, 0);
+        }
     }
 
     // Update is called once per frame
@@ -26,7 +33,7 @@ public class square : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "balloon")
+        if (collision.gameObject.tag == "geguri")
         {
             GameManager.I.gameOver();
         }

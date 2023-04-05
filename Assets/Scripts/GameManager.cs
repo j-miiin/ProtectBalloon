@@ -25,8 +25,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim.SetBool("isOver", false);
         Time.timeScale = 1.0f;
-        InvokeRepeating("makeSquare", 0.0f, 0.5f);  // ("함수 이름", 몇 초 후에 실행시켜라, 몇초마다)
+        InvokeRepeating("makeSquare", 0.0f, 0.3f);  // ("함수 이름", 몇 초 후에 실행시켜라, 몇초마다)
     }
 
     // Update is called once per frame
@@ -48,8 +49,8 @@ public class GameManager : MonoBehaviour
     public void gameOver()
     {
         isRunning = false;
-        anim.SetBool("isDie", true);    
-        Invoke("timeStop", 0.5f);   // 0.5초 후에 timeStop 함수를 실행시켜라
+        anim.SetBool("isOver", true);    
+        Invoke("timeStop", 0.7f);   // 0.5초 후에 timeStop 함수를 실행시켜라
         endPanel.SetActive(true);
         thisScoreText.text = alive.ToString("N2");
 
